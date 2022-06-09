@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import {useEffect} from "react";
+import {Box, Container, Typography} from "@mui/material";
+import theme from "./styles/theme";
+
+import AppBar from "./components/appbar";
+import Banner from "./components/banner";
+import Promotions from "./components/promotions";
+import Products from "./components/products";
+import Footer from "./components/footer";
+import AppDrawer from "./components/drawer";
+import Search from "./components/search";
 
 function App() {
+  useEffect(() => {
+    document.title = "demostore";
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container maxWidth="xl" sx={{background: "#fff"}}>
+      <AppBar />
+      <AppDrawer />
+      <Search />
+      <Banner />
+      <Promotions />
+      <Box
+        display="flex"
+        alignItems="Center"
+        justifyContent="center"
+        sx={{p: 4}}
+      >
+        <Typography style={{fontFamily: "'Nunito', 'sans-serif'"}}>
+          New Arrivals Bags
+        </Typography>
+      </Box>
+      <Products />
+      <Footer />
+    </Container>
   );
 }
 
