@@ -1,6 +1,5 @@
 import {useSelector} from "react-redux";
 import {
-  Divider,
   FormControl,
   Grid,
   InputLabel,
@@ -14,7 +13,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import LoginIcon from "@mui/icons-material/Login";
+// import LoginIcon from "@mui/icons-material/Login";
 
 import {
   MyList,
@@ -22,13 +21,13 @@ import {
   ActionIconContainerMobile,
 } from "../../styles/appbar";
 import {Colors} from "../../styles/theme";
-import {Link, useNavigate} from "react-router-dom";
-import useRoute from "../../hooks/useRoute";
-import {useUserAuth} from "../../context/auth/UserAuthContext";
+import {useNavigate} from "react-router-dom";
+// import useRoute from "../../hooks/useRoute";
+// import {useUserAuth} from "../../context/auth/UserAuthContext";
 
 export default function Actions({matches}) {
   // const {user} = useUserAuth();
-  const [goLogIn] = useRoute();
+  // const [goLogIn] = useRoute();
   const navigate = useNavigate();
   const {cartTotalQuantity} = useSelector((state) => state.cart);
 

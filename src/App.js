@@ -5,8 +5,8 @@ import Home from "./pages/home";
 import NotFound from "./components/notfound";
 import AllProducts from "./components/products/AllProducts";
 import Cart from "./pages/cart";
-import LogIn from "./pages/validation/LogIn";
-import SignUp from "./pages/validation/SignUp";
+// import LogIn from "./pages/validation/LogIn";
+// import SignUp from "./pages/validation/SignUp";
 
 function App() {
   useEffect(() => {
