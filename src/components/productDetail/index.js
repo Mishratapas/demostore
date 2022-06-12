@@ -24,7 +24,7 @@ const ProductDetail = ({open, onClose, product}) => {
     >
       <DialogTitle sx={{background: Colors.secondary}}>
         <Box display="flex" alignItems="center" justifyContent={"center"}>
-          {product.name}
+          {product.title}
           <IconButton>
             <CloseIcon />
           </IconButton>

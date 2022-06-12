@@ -1,50 +1,74 @@
 export const bags = [
   {
     id: 1,
-    name: "Super Backpack",
+    title: "Super Backpack",
     price: 129.99,
     description:
       "Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo tempor incididunt ut labore et dolore magna",
     image: "/images/products/bag_01.png",
+    rating: {
+      rate: 3.9,
+      count: 120,
+    },
   },
   {
     id: 2,
-    name: "New Hip",
+    title: "New Hip",
     price: 199.99,
     description:
       "Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo tempor incididunt ut labore et dolore magna",
     image: "/images/products/bag_02.png",
+    rating: {
+      rate: 4.2,
+      count: 142,
+    },
   },
   {
     id: 3,
-    name: "Elite Series",
+    title: "Elite Series",
     price: 189.99,
     description:
       "Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo tempor incididunt ut labore et dolore magna",
     image: "/images/products/bag_03.png",
+    rating: {
+      rate: 3.9,
+      count: 120,
+    },
   },
   {
     id: 4,
-    name: "Casual",
+    title: "Casual",
     price: 129.99,
     description:
       "Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo tempor incididunt ut labore et dolore magna",
     image: "/images/products/bag_04.png",
+    rating: {
+      rate: 3.9,
+      count: 120,
+    },
   },
   {
     id: 5,
-    name: "Best Tote",
+    title: "Best Tote",
     price: 399.99,
     description:
       "Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo tempor incididunt ut labore et dolore magna",
     image: "/images/products/bag_05.png",
+    rating: {
+      rate: 3.9,
+      count: 120,
+    },
   },
   {
     id: 6,
-    name: "Charming Series",
+    title: "Charming Series",
     price: 689.99,
     description:
       "Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo tempor incididunt ut labore et dolore magna",
     image: "/images/products/bag_06.png",
+    rating: {
+      rate: 3.9,
+      count: 120,
+    },
   },
 ];

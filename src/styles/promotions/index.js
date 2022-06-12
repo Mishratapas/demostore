@@ -1,4 +1,4 @@
-import {Box, Hidden, styled, Typography} from "@mui/material";
+import {Box, styled, Typography} from "@mui/material";
 
 import {Colors} from "../theme";
 import "@fontsource/montez";

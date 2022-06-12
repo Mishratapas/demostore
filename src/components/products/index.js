@@ -1,43 +1,48 @@
-import {Container, Grid, useMediaQuery} from "@mui/material";
-import {useTheme} from "@mui/material/styles";
+import {Box, Container} from "@mui/material";
 
-import {bags} from "../../data";
-import SingleProductDesktop from "./SingleProductDesktop";
-import SingleProductMobile from "./SingleProductMobile";
+import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+
+import {getData} from "../../services/dataSlice";
+import {ButtonText} from "../../styles/products";
+
+import {subTotal} from "../../services/cartSlice";
 
 const Products = () => {
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("md"));
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
 
-  const renderProducts = bags.map((product) => (
-    <Grid
-      item
-      key={product.id}
-      xs={2}
-      sm={4}
-      md={4}
-      display="flex"
-      alignItems="center"
-      flexDirection={"column"}
-    >
-      {matches ? (
-        <SingleProductMobile product={product} matches={matches} />
-      ) : (
-        <SingleProductDesktop product={product} matches={matches} />
-      )}
-    </Grid>
-  ));
+  useEffect(() => {
+    dispatch(subTotal());
+  }, [dispatch, cart]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getData());
+  }, [dispatch]);
+
+  const handleClick = () => {
+    navigate("/products");
+  };
+
   return (
     <Container>
-      <Grid
-        container
-        spacing={{xs: 2, md: 3}}
-        justifyContent={"center"}
-        sx={{margin: "20px 4px 10px 4px"}}
-        columns={{xs: 4, sm: 9, md: 12}}
+      <Box
+        sx={{
+          marginTop: "10px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+        onClick={() => handleClick()}
       >
-        {renderProducts}
-      </Grid>
+        <ButtonText variant="contained">
+          Go to Products
+          <ArrowRightAltIcon />
+        </ButtonText>
+      </Box>
     </Container>
   );
 };

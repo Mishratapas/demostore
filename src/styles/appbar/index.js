@@ -1,4 +1,4 @@
-import {Box, Typography, List} from "@mui/material";
+import {Box, Typography, List, Button} from "@mui/material";
 import {styled} from "@mui/material/styles";
 import {Colors} from "../theme";
 import "@fontsource/montez";
@@ -9,6 +9,8 @@ export const AppBarContainer = styled(Box)(() => ({
   alignItems: "center",
   justifyContent: "center",
   padding: "2px 10px",
+  backgroundColor: "#69c7c5",
+  // backgroundColor: "#ab5e82",
 }));
 
 export const AppBarHeader = styled(Typography)(() => ({
@@ -16,7 +18,7 @@ export const AppBarHeader = styled(Typography)(() => ({
   flexGrow: 1,
   fontSize: "4rem",
   fontFamily: '"Montez", "cursive"',
-  color: Colors.secondary,
+  color: Colors.black,
 }));
 
 export const MyList = styled(List)(({type}) => ({
@@ -39,3 +41,32 @@ export const ActionIconContainerMobile = styled(Box)(() => ({
 }));
 
 export const ActionIconContainerDesktop = styled(Box)(() => ({flexGrow: 0}));
+
+export const OtherAppBarContainer = styled(Box)(({theme}) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-evenly",
+  marginTop: 4,
+  backgroundColor: "#77d9d9",
+  borderRadius: "20px",
+  // [theme.breakpoints.down("md")]: {},
+}));
+
+export const OtherAppBarHeader = styled(Typography)(({theme}) => ({
+  [theme.breakpoints.up("md")]: {fontSize: "2rem"},
+  padding: "2px",
+  [theme.breakpoints.down("sm")]: {fontSize: "2rem"},
+  fontSize: "4rem",
+  fontFamily: '"Montez", "cursive"',
+  color: Colors.white,
+}));
+
+export const OtherAppBarLeft = styled(Button)(({theme}) => ({
+  [theme.breakpoints.up("md")]: {fontSize: "2rem"},
+  padding: "2px",
+  [theme.breakpoints.down("sm")]: {fontSize: "2rem"},
+  fontSize: "4rem",
+  fontFamily: '"Montez", "cursive"',
+  color: Colors.primary,
+  cursor: "pointer",
+}));

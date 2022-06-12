@@ -1,3 +1,5 @@
+import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import FitScreenIcon from "@mui/icons-material/FitScreen";
@@ -11,10 +13,18 @@ import {
   ProductImage,
 } from "../../styles/products";
 import PreductMeta from "./ProductMeta";
-import {useState} from "react";
+import {addToCart, subTotal} from "../../services/cartSlice";
 
 const SingleProductDesktop = ({product, matches}) => {
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    dispatch(subTotal());
+  }, [dispatch, cart]);
+
   const [showOptions, setShowOptions] = useState(false);
+
   const handleMouseEnter = () => {
     setShowOptions(true);
   };
@@ -22,11 +32,15 @@ const SingleProductDesktop = ({product, matches}) => {
     setShowOptions(false);
   };
 
+  const handleClick = () => {
+    dispatch(addToCart(product));
+  };
+
   return (
     <>
       <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <ProductImage src={product.image} />
-        <ProductFavButton isFav={0}>
+        <ProductFavButton isFav={0} style={{marginBottom: "20px"}}>
           <FavoriteIcon />
         </ProductFavButton>
         {showOptions && (
@@ -34,11 +48,11 @@ const SingleProductDesktop = ({product, matches}) => {
             variant="contained"
             label="add to cart"
             show={showOptions}
+            onClick={() => handleClick()}
           >
             Add To Cart
           </ProductAddToCart>
         )}
-
         <ProductActionWrapper show={showOptions}>
           <Stack direction="column">
             <ProductActionButton>
@@ -52,13 +66,6 @@ const SingleProductDesktop = ({product, matches}) => {
       </Product>
       <PreductMeta product={product} matches={matches} />
     </>
-    /*  
-    product
-    Image
-    Meta
-    Actions
-    Footer
-   */
   );
 };
 

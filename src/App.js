@@ -1,39 +1,26 @@
 import {useEffect} from "react";
-import {Box, Container, Typography} from "@mui/material";
-import theme from "./styles/theme";
+import {Route, Routes} from "react-router-dom";
 
-import AppBar from "./components/appbar";
-import Banner from "./components/banner";
-import Promotions from "./components/promotions";
-import Products from "./components/products";
-import Footer from "./components/footer";
-import AppDrawer from "./components/drawer";
-import Search from "./components/search";
+import Home from "./pages/home";
+import NotFound from "./components/notfound";
+import AllProducts from "./components/products/AllProducts";
+import Cart from "./pages/cart";
+import LogIn from "./pages/validation/LogIn";
+import SignUp from "./pages/validation/SignUp";
 
 function App() {
   useEffect(() => {
     document.title = "demostore";
   }, []);
   return (
-    <Container maxWidth="xl" sx={{background: "#fff"}}>
-      <AppBar />
-      <AppDrawer />
-      <Search />
-      <Banner />
-      <Promotions />
-      <Box
-        display="flex"
-        alignItems="Center"
-        justifyContent="center"
-        sx={{p: 4}}
-      >
-        <Typography style={{fontFamily: "'Nunito', 'sans-serif'"}}>
-          New Arrivals Bags
-        </Typography>
-      </Box>
-      <Products />
-      <Footer />
-    </Container>
+    <Routes>
+      <Route exact path="/" element={<Home />} />
+      {/* <Route exact path="/login" element={<LogIn />} />
+      <Route exact path="/signup" element={<SignUp />} /> */}
+      <Route exact path="/products" element={<AllProducts />} />
+      <Route exact path="/cart" element={<Cart />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 

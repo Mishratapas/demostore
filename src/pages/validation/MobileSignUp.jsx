@@ -1,0 +1,99 @@
+import {useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {Form, Button, Alert} from "react-bootstrap";
+import {GoogleButton} from "react-google-button";
+import {Box, Divider} from "@mui/material";
+
+import Footer from "../../components/footer";
+
+import {
+  HeaderContainer,
+  HeaderText,
+  InputsContainer,
+  OuterContainer,
+  SecondContainer,
+} from "../../styles/validation";
+
+import {useUserAuth} from "../../context/auth/UserAuthContext";
+
+const MobileSignUp = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const {signUp} = useUserAuth();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      await signUp(email, password);
+      navigate("/");
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  // const testSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(`Email is ${email} and password is ${password}`);
+  // };
+
+  return (
+    <>
+      <Box
+        sx={{display: "flex", alignItems: "center", justifyContent: "center"}}
+      >
+        <OuterContainer>
+          <HeaderContainer>
+            <HeaderText variant="h4">demostore</HeaderText>
+          </HeaderContainer>
+          {error && <Alert variant="danger">{error}</Alert>}
+          <InputsContainer>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Control
+                  type="email"
+                  placeholder="Enter email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Form.Group>
+              <div className="d-grid gap-2">
+                <Button variant="primary" type="submit">
+                  Sign up
+                </Button>
+              </div>
+            </Form>
+            <Divider flexItem style={{marginTop: "15px"}}>
+              OR
+            </Divider>
+            <div className="d-flex justify-content-center mt-3">
+              <GoogleButton className="g-btn" type="dark" />
+            </div>
+          </InputsContainer>
+        </OuterContainer>
+      </Box>
+      <Box
+        sx={{display: "flex", alignItems: "center", justifyContent: "center"}}
+      >
+        <SecondContainer>
+          <div className="text-center">
+            Already have an account ? <Link to="/login">Log in</Link>
+          </div>
+        </SecondContainer>
+      </Box>
+      <Box sx={{marginTop: "20px"}}>
+        <Footer />
+      </Box>
+    </>
+  );
+};
+
+export default MobileSignUp;

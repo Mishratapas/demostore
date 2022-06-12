@@ -28,6 +28,11 @@ export const Colors = {
   black: "#000",
 };
 
+export const Font = {
+  mantez: '"Montez", "cursive"',
+  nunito: "'Nunito', 'sans-serif'",
+};
+
 const theme = createTheme({
   palette: {
     primary: {main: Colors.primary},
