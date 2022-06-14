@@ -1,4 +1,4 @@
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import {
   FormControl,
   Grid,
@@ -13,7 +13,6 @@ import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import LoginIcon from "@mui/icons-material/Login";
 
 import {
   MyList,
@@ -23,11 +22,14 @@ import {
 import {Colors} from "../../styles/theme";
 import {useNavigate} from "react-router-dom";
 import {useUserAuth} from "../../context/auth/UserAuthContext";
+import {removeNames} from "../../services/nameSlice";
 
 export default function Actions({matches}) {
-  const {logOut} = useUserAuth();
+  const dispatch = useDispatch();
+  const {user, logOut} = useUserAuth();
   const navigate = useNavigate();
   const {cartTotalQuantity} = useSelector((state) => state.cart);
+  // const {removeNames} = useSelector((state) => state.name);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -41,6 +43,7 @@ export default function Actions({matches}) {
   const handleLogOutClick = async (e) => {
     try {
       await logOut();
+      dispatch(removeNames());
       navigate("/");
     } catch (err) {}
   };
@@ -73,18 +76,11 @@ export default function Actions({matches}) {
             <MenuItem value={10}>
               <AccountBoxIcon style={{color: "#241ab4"}} /> Account
             </MenuItem>
-            <Grid
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-evenly",
-              }}
-            >
+            {user ? (
               <MenuItem value={20} onClick={() => handleLogOutClick()}>
                 <LogoutIcon style={{color: "#db1b18"}} /> Log out
               </MenuItem>
-              {/* <MenuItem>{user && outOrIn}</MenuItem> */}
-            </Grid>
+            ) : null}
           </Select>
         </FormControl>
         <ListItemButton sx={{justifyContent: "center"}}>

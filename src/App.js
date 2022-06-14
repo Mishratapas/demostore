@@ -7,6 +7,7 @@ import Cart from "./pages/cart";
 import LogIn from "./pages/validation/LogIn";
 import SignUp from "./pages/validation/SignUp";
 import {useEffect} from "react";
+import ProtectedRoutes from "./protected/ProtectedRoutes";
 
 function App() {
   useEffect(() => {
@@ -19,7 +20,15 @@ function App() {
       <Route exact path="/" element={<Home />} />
       <Route exact path="/login" element={<LogIn />} />
       <Route exact path="/signup" element={<SignUp />} />
-      <Route exact path="/products" element={<AllProducts />} />
+      <Route
+        exact
+        path="/products"
+        element={
+          <ProtectedRoutes>
+            <AllProducts />
+          </ProtectedRoutes>
+        }
+      />
       <Route exact path="/cart" element={<Cart />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

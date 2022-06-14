@@ -10,7 +10,6 @@ import AppDrawer from "../../components/drawer";
 import Search from "../../components/search";
 import {useUserAuth} from "../../context/auth/UserAuthContext";
 import {useEffect, useState} from "react";
-// import party from "../../../public/images/party.png";
 
 const WelcomeScreen = () => {
   const {user} = useUserAuth();
@@ -58,6 +57,13 @@ const WelcomeScreen = () => {
               justifyContent: "center",
             }}
           >
+            {user ? (
+              <>
+                <Typography variant="h5" sx={{color: "red"}}>
+                  {user.email}
+                </Typography>
+              </>
+            ) : null}
             <Typography variant="h5" sx={{color: "red"}}>
               {`${fname}  ${lname}`}
             </Typography>

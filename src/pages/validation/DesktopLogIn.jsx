@@ -61,9 +61,9 @@ const DesktopLogIn = () => {
           <OuterContainer elevation={5}>
             <HeaderContainer>
               <HeaderText variant="h4">demostore</HeaderText>
-              {error && <Alert variant="danger">{error}s</Alert>}
             </HeaderContainer>
             <InputsContainer>
+              {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Control

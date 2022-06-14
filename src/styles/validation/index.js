@@ -28,7 +28,7 @@ export const HeaderContainer = styled(Typography)(() => ({
   alignItems: "center",
   justifyContent: "center",
   width: "100%",
-  height: "150px",
+  height: "100px",
   top: 0,
 
   backgroundColor: Colors.white,

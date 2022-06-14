@@ -1,4 +1,4 @@
-import {Box, Button, IconButton, Typography} from "@mui/material";
+import {Box, Button, Grid, IconButton, Typography} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import {AppBarContainer, AppBarHeader} from "../../styles/appbar";
@@ -26,32 +26,65 @@ const AppBarMobile = ({matches}) => {
 
   return (
     <AppBarContainer>
-      <IconButton onClick={() => setDrawerOpen(true)}>
-        <MenuIcon />
-      </IconButton>
-      <AppBarHeader textAlign={"center"} variant="h6">
-        demostore
-      </AppBarHeader>
-      <Box>
-        {user ? (
-          <Typography sx={{color: Colors.white, fontWeight: "bold"}}>
-            <Typography sx={{color: Colors.primary, fontWeight: "bold"}}>
-              Hello,
-            </Typography>
-            {fname}
-          </Typography>
-        ) : (
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent={"space-evenly"}
-          >
-            <Button variant="contained" onClick={() => navigate("/login")}>
-              <LoginIcon /> Sign in
-            </Button>
+      <Grid container spacing={3}>
+        <Grid
+          display="flex"
+          alignItems="center"
+          justifyContent={"flex-start"}
+          item
+          xs={4}
+          md={4}
+        >
+          <IconButton onClick={() => setDrawerOpen(true)}>
+            <MenuIcon />
+          </IconButton>
+        </Grid>
+        <Grid item xs={4} md={4}>
+          <AppBarHeader variant="h6">demostore</AppBarHeader>
+        </Grid>
+        <Grid
+          display="flex"
+          alignItems="center"
+          justifyContent={"flex-end"}
+          item
+          xs={4}
+          md={4}
+        >
+          <Box>
+            {user ? (
+              <>
+                {fname ? (
+                  <>
+                    <Typography sx={{color: Colors.white, fontWeight: "bold"}}>
+                      <Typography
+                        sx={{color: Colors.primary, fontWeight: "bold"}}
+                      >
+                        Hello,
+                      </Typography>
+                      {fname}
+                    </Typography>
+                  </>
+                ) : (
+                  <Typography sx={{color: Colors.white, fontWeight: "bold"}}>
+                    <Typography
+                      sx={{color: Colors.primary, fontWeight: "bold"}}
+                    >
+                      Hello,
+                    </Typography>
+                    {user.email}
+                  </Typography>
+                )}
+              </>
+            ) : (
+              <Box display="block">
+                <Button variant="contained" onClick={() => navigate("/login")}>
+                  <LoginIcon /> Sign in
+                </Button>
+              </Box>
+            )}
           </Box>
-        )}
-      </Box>
+        </Grid>
+      </Grid>
       <Actions matches={matches} />
     </AppBarContainer>
   );

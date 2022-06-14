@@ -13,10 +13,9 @@ const userAuthContext = createContext();
 
 export const UserAuthContextProvider = ({children}) => {
   const [user, setUser] = useState("");
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
 
   const signUp = (email, password) => {
+    // localStorage.setItem("email", JSON.stringify(email));
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
@@ -50,8 +49,6 @@ export const UserAuthContextProvider = ({children}) => {
         signUp,
         logOut,
         googleSignIn,
-        setFname,
-        setLname,
       }}
     >
       {children}

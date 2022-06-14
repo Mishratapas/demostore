@@ -20,7 +20,7 @@ const MobileLogIn = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const {logIn, GoogleSignIn} = useUserAuth();
+  const {logIn} = useUserAuth();
 
   const handleSubmit = async (e) => {
     console.log("logged in");
@@ -30,7 +30,6 @@ const MobileLogIn = () => {
       await logIn(email, password);
       navigate("/");
     } catch (err) {
-      console.log(err);
       setError(err.message);
     }
   };
@@ -43,6 +42,7 @@ const MobileLogIn = () => {
           <HeaderContainer>
             <HeaderText variant="h4">demostore</HeaderText>
           </HeaderContainer>
+          {error && <Alert variant="danger">{error}</Alert>}
           <InputsContainer>
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="formBasicEmail">

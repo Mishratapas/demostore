@@ -58,7 +58,7 @@ const DesktopLogIn = () => {
                 <Form.Group className="mb-3">
                   <Form.Control
                     type="text"
-                    placeholder="Enter First name (opptional)"
+                    placeholder="Enter First name (optional)"
                     onChange={(e) => dispatch(getFirstName(e.target.value))}
                   />
                 </Form.Group>

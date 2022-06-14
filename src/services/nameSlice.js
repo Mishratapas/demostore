@@ -21,8 +21,14 @@ export const nameSlice = createSlice({
       state.lname = action.payload;
       localStorage.setItem("lname", JSON.stringify(state.lname));
     },
+    removeNames: (state, action) => {
+      state.fname = "";
+      state.lname = "";
+      localStorage.setItem("fname", JSON.stringify(state.fname));
+      localStorage.setItem("lname", JSON.stringify(state.lname));
+    },
   },
 });
 
-export const {getFirstName, getSecondName} = nameSlice.actions;
+export const {getFirstName, getSecondName, removeNames} = nameSlice.actions;
 export default nameSlice.reducer;

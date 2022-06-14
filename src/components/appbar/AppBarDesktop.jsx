@@ -15,16 +15,31 @@ const AppbarDesktop = ({matches}) => {
   const {user} = useUserAuth();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-  const {fname, lname} = useSelector((state) => state.name);
-  console.log(fname + lname);
+  const {fname} = useSelector((state) => state.name);
 
+  const handleGotoProducts = () => {
+    if (!user) {
+      navigate("/login");
+      window.alert(
+        "please signin to see product page!! Redirecting you to login page"
+      );
+    } else {
+      navigate("/products");
+    }
+  };
   useEffect(() => {
     dispatch(subTotal());
   }, [dispatch, cart]);
 
   return (
     <AppBarContainer>
-      <Grid container spacing={2}>
+      <Grid
+        container
+        spacing={2}
+        display="flex"
+        alignItems="center"
+        justifyContent={"center"}
+      >
         <Grid item lg={2} md={2}>
           <AppBarHeader>demoStore</AppBarHeader>
         </Grid>
@@ -33,36 +48,59 @@ const AppbarDesktop = ({matches}) => {
             display="flex"
             alignItems={"center"}
             justifyContent={"space-between"}
-            sx={{marginTop: "25px"}}
+            // sx={{marginTop: "25px"}}
           >
             <Button variant="contained">Home</Button>
             <Button variant="contained">Category</Button>
-            <Button variant="contained">Products</Button>
+            <Button variant="contained" onClick={() => handleGotoProducts()}>
+              Products
+            </Button>
             <Box>
               {user ? (
-                <Typography sx={{color: Colors.white, fontWeight: "bold"}}>
-                  <Typography sx={{color: Colors.primary, fontWeight: "bold"}}>
-                    Hello,
-                  </Typography>
-                  {`${fname}`}
-                </Typography>
+                <>
+                  {fname ? (
+                    <>
+                      <Typography>Hello, {`${fname}`}</Typography>
+                    </>
+                  ) : (
+                    <>
+                      <Typography
+                        sx={{color: Colors.primary, fontWeight: "bold"}}
+                      >
+                        Hello,
+                        <Typography
+                          sx={{color: Colors.white}}
+                        >{`${user.email}`}</Typography>
+                      </Typography>
+                    </>
+                  )}
+                </>
               ) : (
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Typography sx={{color: Colors.primary, fontWeight: "bold"}}>
-                    Not logged in ?
-                  </Typography>
-                  <Button
-                    variant="contained"
-                    onClick={() => navigate("/login")}
+                <Box display="block">
+                  <Box sx={{marginLeft: "60px"}}>
+                    <Typography
+                      sx={{color: Colors.primary, fontWeight: "bold"}}
+                    >
+                      Not logged in ?
+                    </Typography>
+                    <Button
+                      variant="contained"
+                      onClick={() => navigate("/login")}
+                    >
+                      <LoginIcon /> Sign in
+                    </Button>
+                  </Box>
+                  <Box
+                    sx={{
+                      background: "#000000",
+                      borderRadius: "16px",
+                      padding: "5px",
+                    }}
                   >
-                    <LoginIcon /> Sign in
-                  </Button>
+                    <Typography sx={{color: Colors.white}}>
+                      please signin to see products page
+                    </Typography>
+                  </Box>
                 </Box>
               )}
             </Box>

@@ -15,6 +15,7 @@ import {lighten} from "polished";
 import {Colors, Font} from "../../styles/theme";
 import useRoute from "../../hooks/useRoute";
 import {Navigate, useNavigate} from "react-router-dom";
+import {useUserAuth} from "../../context/auth/UserAuthContext";
 
 const MiddleDivider = styled((props) => (
   <Divider variant="middle" {...props} />
@@ -22,11 +23,27 @@ const MiddleDivider = styled((props) => (
 
 const AppDrawer = () => {
   const navigate = useNavigate();
-  const [goProducts] = useRoute();
+
   const {drawerOpen, setDrawerOpen} = useUIContext();
+  const {user} = useUserAuth();
 
   const handleGoToProducts = () => {
-    navigate("/products");
+    if (!user) {
+      // window.onload = function () {
+      //   var mobile =
+      //     /iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(
+      //       navigator.userAgent.toLowerCase()
+      //     );
+      //   if (mobile) {
+      //     alert(
+      //       "Please sign in to visit Products page!! Redirecting you to login page"
+      //     );
+      //   }
+      // };
+      alert("hello");
+    } else {
+      navigate("/products");
+    }
   };
 
   const handleGoToHome = () => {
