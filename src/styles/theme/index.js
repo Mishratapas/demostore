@@ -44,7 +44,7 @@ const theme = createTheme({
       styleOverrides: {
         paper: {
           width: "250px",
-          background: Colors.primary,
+          background: Colors.white,
           color: Colors.secondary,
           borderRadius: "0px 100px 0px 0px",
           borderRight: `1px solid ${Colors.secondary}`,

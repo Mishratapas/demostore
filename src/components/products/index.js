@@ -9,8 +9,10 @@ import {getData} from "../../services/dataSlice";
 import {ButtonText} from "../../styles/products";
 
 import {subTotal} from "../../services/cartSlice";
+import {useUserAuth} from "../../context/auth/UserAuthContext";
 
 const Products = () => {
+  const {user} = useUserAuth();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
@@ -24,7 +26,14 @@ const Products = () => {
   }, [dispatch]);
 
   const handleClick = () => {
-    navigate("/products");
+    if (!user) {
+      alert(
+        "please login to visit product page!! Redirecting you to login page"
+      );
+      navigate("/login");
+    } else {
+      navigate("/products");
+    }
   };
 
   return (

@@ -14,7 +14,7 @@ export const AppBarContainer = styled(Box)(() => ({
 
 export const AppBarHeader = styled(Typography)(() => ({
   padding: "4px",
-  fontSize: "3rem",
+  fontSize: "2rem",
   fontFamily: '"Montez", "cursive"',
   color: Colors.black,
 }));
