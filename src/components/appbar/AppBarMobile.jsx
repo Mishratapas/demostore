@@ -1,8 +1,7 @@
-import {Box, Button, IconButton, ListItemText, Typography} from "@mui/material";
+import {Box, Button, IconButton, Typography} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import {AppBarContainer, AppBarHeader} from "../../styles/appbar";
-import SearchIcon from "@mui/icons-material/Search";
 import Actions from "./Actions";
 import {useUIContext} from "../../context/UI";
 import {useDispatch, useSelector} from "react-redux";
@@ -18,11 +17,12 @@ const AppBarMobile = ({matches}) => {
   const {user} = useUserAuth();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  const {fname} = useSelector((state) => state.name);
 
   useEffect(() => {
     dispatch(subTotal());
   }, [dispatch, cart]);
-  const {setDrawerOpen, setShowSearch} = useUIContext();
+  const {setDrawerOpen} = useUIContext();
 
   return (
     <AppBarContainer>
@@ -38,7 +38,7 @@ const AppBarMobile = ({matches}) => {
             <Typography sx={{color: Colors.primary, fontWeight: "bold"}}>
               Hello,
             </Typography>
-            {user.email}
+            {fname}
           </Typography>
         ) : (
           <Box
@@ -46,11 +46,7 @@ const AppBarMobile = ({matches}) => {
             alignItems="center"
             justifyContent={"space-evenly"}
           >
-            <Button
-              variant="contained"
-              onClick={() => navigate("/login")}
-              // sx={{width: "100%", height: "50%"}}
-            >
+            <Button variant="contained" onClick={() => navigate("/login")}>
               <LoginIcon /> Sign in
             </Button>
           </Box>

@@ -1,7 +1,7 @@
+import {useDispatch} from "react-redux";
 import {Form, Button, Alert} from "react-bootstrap";
-import {GoogleButton} from "react-google-button";
 import {Link, useNavigate} from "react-router-dom";
-import {Box, Divider, Grid} from "@mui/material";
+import {Box, Grid} from "@mui/material";
 
 import {
   HeaderContainer,
@@ -15,16 +15,16 @@ import {
 import Footer from "../../components/footer";
 import {useState} from "react";
 import {useUserAuth} from "../../context/auth/UserAuthContext";
+import {getFirstName, getSecondName} from "../../services/nameSlice";
 
 const DesktopLogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const {signUp, googleSignIn, fname, lname, setFname, setLname} =
-    useUserAuth();
+  const {signUp} = useUserAuth();
 
-  console.log(fname + lname);
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     console.log("logged in");
@@ -32,19 +32,6 @@ const DesktopLogIn = () => {
     setError("");
     try {
       await signUp(email, password);
-      navigate("/");
-    } catch (err) {
-      console.log(err);
-      setError(err.message);
-    }
-  };
-
-  const handleGoogleSignIn = async (e) => {
-    console.log("logged in");
-    e.preventDefault();
-    setError("");
-    try {
-      await googleSignIn(email, password);
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -72,14 +59,14 @@ const DesktopLogIn = () => {
                   <Form.Control
                     type="text"
                     placeholder="Enter First name (opptional)"
-                    onChange={(e) => setFname(e.target.value)}
+                    onChange={(e) => dispatch(getFirstName(e.target.value))}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Control
                     type="text"
                     placeholder="Enter Second name (optional)"
-                    onChange={(e) => setLname(e.target.value)}
+                    onChange={(e) => dispatch(getSecondName(e.target.value))}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">

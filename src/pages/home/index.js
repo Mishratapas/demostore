@@ -1,11 +1,5 @@
-import {
-  Container,
-  Dialog,
-  DialogContentText,
-  DialogTitle,
-  Box,
-  Typography,
-} from "@mui/material";
+import {useSelector} from "react-redux";
+import {Container, Dialog, DialogTitle, Box, Typography} from "@mui/material";
 
 import AppBar from "../../components/appbar";
 import Banner from "../../components/banner";
@@ -21,6 +15,8 @@ import {useEffect, useState} from "react";
 const WelcomeScreen = () => {
   const {user} = useUserAuth();
   const [open, setOpen] = useState(false);
+
+  const {fname, lname} = useSelector((state) => state.name);
 
   useEffect(() => {
     setOpen(true);
@@ -63,13 +59,11 @@ const WelcomeScreen = () => {
             }}
           >
             <Typography variant="h5" sx={{color: "red"}}>
-              {user.email}
+              {`${fname}  ${lname}`}
             </Typography>
           </Box>
         </Dialog>
-      ) : (
-        "not logged in"
-      )}
+      ) : null}
     </>
   );
 };

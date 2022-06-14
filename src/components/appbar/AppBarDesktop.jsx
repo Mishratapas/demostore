@@ -12,11 +12,11 @@ import {Colors} from "../../styles/theme";
 
 const AppbarDesktop = ({matches}) => {
   const navigate = useNavigate();
-  const {user, fname, lname} = useUserAuth();
+  const {user} = useUserAuth();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-
-  console.log(fname + " " + lname);
+  const {fname, lname} = useSelector((state) => state.name);
+  console.log(fname + lname);
 
   useEffect(() => {
     dispatch(subTotal());
@@ -44,7 +44,7 @@ const AppbarDesktop = ({matches}) => {
                   <Typography sx={{color: Colors.primary, fontWeight: "bold"}}>
                     Hello,
                   </Typography>
-                  {user.email}
+                  {`${fname}`}
                 </Typography>
               ) : (
                 <Box

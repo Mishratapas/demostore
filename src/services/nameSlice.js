@@ -1,6 +1,13 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-const initialState = {fname: "", lname: ""};
+const initialState = {
+  fname: localStorage.getItem("fname")
+    ? JSON.parse(localStorage.getItem("fname"))
+    : "",
+  lname: localStorage.getItem("lname")
+    ? JSON.parse(localStorage.getItem("lname"))
+    : "",
+};
 
 export const nameSlice = createSlice({
   name: "name",
@@ -8,9 +15,11 @@ export const nameSlice = createSlice({
   reducers: {
     getFirstName: (state, action) => {
       state.fname = action.payload;
+      localStorage.setItem("fname", JSON.stringify(state.fname));
     },
     getSecondName: (state, action) => {
       state.lname = action.payload;
+      localStorage.setItem("lname", JSON.stringify(state.lname));
     },
   },
 });

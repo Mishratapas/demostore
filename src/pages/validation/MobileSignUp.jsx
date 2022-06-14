@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
 import {Form, Button, Alert} from "react-bootstrap";
 
@@ -12,15 +13,17 @@ import {
   OuterContainer,
   SecondContainer,
 } from "../../styles/validation";
-
 import {useUserAuth} from "../../context/auth/UserAuthContext";
+import {getFirstName, getSecondName} from "../../services/nameSlice";
 
 const MobileSignUp = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
-  const {signUp, setFname, setLname} = useUserAuth();
+
+  const {signUp} = useUserAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,14 +52,14 @@ const MobileSignUp = () => {
                 <Form.Control
                   type="name"
                   placeholder="Enter First Name (Optional)"
-                  onChange={(e) => setFname(e.target.value)}
+                  onChange={(e) => dispatch(getFirstName(e.target.value))}
                 />
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Control
                   type="name"
                   placeholder="Enter Last Name (Optional)"
-                  onChange={(e) => setLname(e.target.value)}
+                  onChange={(e) => dispatch(getSecondName(e.target.value))}
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">

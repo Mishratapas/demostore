@@ -50,8 +50,6 @@ export const UserAuthContextProvider = ({children}) => {
         signUp,
         logOut,
         googleSignIn,
-        fname,
-        lname,
         setFname,
         setLname,
       }}
