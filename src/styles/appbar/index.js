@@ -1,22 +1,20 @@
 import {Box, Typography, List, Button} from "@mui/material";
 import {styled} from "@mui/material/styles";
 import {Colors} from "../theme";
-import "@fontsource/montez";
+//import "@fontsource/montez";
 
 export const AppBarContainer = styled(Box)(() => ({
+  position: "static",
   display: "flex",
-  marginTop: 4,
+  width: "100%",
   alignItems: "center",
-  justifyContent: "center",
-  padding: "2px 10px",
-  backgroundColor: "#69c7c5",
-  // backgroundColor: "#ab5e82",
+  justifyContent: "space-evenly",
+  backgroundColor: "#7b60d1",
 }));
 
 export const AppBarHeader = styled(Typography)(() => ({
   padding: "4px",
-  flexGrow: 1,
-  fontSize: "4rem",
+  fontSize: "3rem",
   fontFamily: '"Montez", "cursive"',
   color: Colors.black,
 }));
@@ -25,7 +23,7 @@ export const MyList = styled(List)(({type}) => ({
   display: type === "row" ? "flex" : "block",
   flexGrow: 3,
   alignItems: "center",
-  justifyContent: "Center",
+  justifyContent: "space-evenly",
 }));
 
 export const ActionIconContainerMobile = styled(Box)(() => ({

@@ -5,6 +5,7 @@ export const bags = [
     price: 129.99,
     description:
       "Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo tempor incididunt ut labore et dolore magna",
+    category: "bags",
     image: "/images/products/bag_01.png",
     rating: {
       rate: 3.9,
@@ -17,6 +18,7 @@ export const bags = [
     price: 199.99,
     description:
       "Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo tempor incididunt ut labore et dolore magna",
+    category: "bags",
     image: "/images/products/bag_02.png",
     rating: {
       rate: 4.2,
@@ -29,6 +31,7 @@ export const bags = [
     price: 189.99,
     description:
       "Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo tempor incididunt ut labore et dolore magna",
+    category: "bags",
     image: "/images/products/bag_03.png",
     rating: {
       rate: 3.9,
@@ -41,6 +44,7 @@ export const bags = [
     price: 129.99,
     description:
       "Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo tempor incididunt ut labore et dolore magna",
+    category: "bags",
     image: "/images/products/bag_04.png",
     rating: {
       rate: 3.9,
@@ -53,6 +57,7 @@ export const bags = [
     price: 399.99,
     description:
       "Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo tempor incididunt ut labore et dolore magna",
+    category: "bags",
     image: "/images/products/bag_05.png",
     rating: {
       rate: 3.9,
@@ -65,6 +70,7 @@ export const bags = [
     price: 689.99,
     description:
       "Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo tempor incididunt ut labore et dolore magna",
+    category: "bags",
     image: "/images/products/bag_06.png",
     rating: {
       rate: 3.9,

@@ -21,7 +21,7 @@ const DesktopLogIn = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const {logIn, GoogleSignIn} = useUserAuth();
+  const {logIn, googleSignIn} = useUserAuth();
 
   const handleSubmit = async (e) => {
     console.log("logged in");
@@ -35,6 +35,20 @@ const DesktopLogIn = () => {
       setError(err.message);
     }
   };
+
+  const handleGoogleSignIn = async (e) => {
+    console.log("logged in");
+    e.preventDefault();
+    setError("");
+    try {
+      await googleSignIn(email, password);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+      setError(err.message);
+    }
+  };
+
   return (
     <Box>
       <Grid container spacing={8}>
@@ -78,7 +92,7 @@ const DesktopLogIn = () => {
                 <GoogleButton
                   className="g-btn"
                   type="dark"
-                  // onClick={handleGoogleSignIn}
+                  onClick={handleGoogleSignIn}
                 />
               </div>
             </InputsContainer>

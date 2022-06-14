@@ -8,5 +8,5 @@ export const UIProvider = ({children}) => {
   const [showSearch, setShowSearch] = useState(false);
 
   const value = {drawerOpen, setDrawerOpen, showSearch, setShowSearch};
-  return <UIContext.Provider value={value}>{children} </UIContext.Provider>;
+  return <UIContext.Provider value={value}>{children}</UIContext.Provider>;
 };

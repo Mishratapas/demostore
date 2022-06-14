@@ -16,10 +16,10 @@ export default function useRoute() {
   };
 
   const goLogIn = () => {
-    navigate("/cart");
+    navigate("/login");
   };
   const goSignUp = () => {
-    navigate("/cart");
+    navigate("/signup");
   };
   return [goHome, goProducts, goCart, goLogIn, goSignUp];
 }

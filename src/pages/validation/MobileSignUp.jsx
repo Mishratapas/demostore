@@ -1,9 +1,8 @@
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {Form, Button, Alert} from "react-bootstrap";
-import {GoogleButton} from "react-google-button";
-import {Box, Divider} from "@mui/material";
 
+import {Box} from "@mui/material";
 import Footer from "../../components/footer";
 
 import {
@@ -21,7 +20,7 @@ const MobileSignUp = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const {signUp} = useUserAuth();
+  const {signUp, setFname, setLname} = useUserAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,11 +33,6 @@ const MobileSignUp = () => {
     }
   };
 
-  // const testSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(`Email is ${email} and password is ${password}`);
-  // };
-
   return (
     <>
       <Box
@@ -47,14 +41,28 @@ const MobileSignUp = () => {
         <OuterContainer>
           <HeaderContainer>
             <HeaderText variant="h4">demostore</HeaderText>
+            {error && <Alert variant="danger">{error}</Alert>}
           </HeaderContainer>
-          {error && <Alert variant="danger">{error}</Alert>}
           <InputsContainer>
             <Form onSubmit={handleSubmit}>
+              <Form.Group className="mb-3">
+                <Form.Control
+                  type="name"
+                  placeholder="Enter First Name (Optional)"
+                  onChange={(e) => setFname(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Control
+                  type="name"
+                  placeholder="Enter Last Name (Optional)"
+                  onChange={(e) => setLname(e.target.value)}
+                />
+              </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Control
                   type="email"
-                  placeholder="Enter email"
+                  placeholder="Email"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </Form.Group>
@@ -71,12 +79,6 @@ const MobileSignUp = () => {
                 </Button>
               </div>
             </Form>
-            <Divider flexItem style={{marginTop: "15px"}}>
-              OR
-            </Divider>
-            <div className="d-flex justify-content-center mt-3">
-              <GoogleButton className="g-btn" type="dark" />
-            </div>
           </InputsContainer>
         </OuterContainer>
       </Box>

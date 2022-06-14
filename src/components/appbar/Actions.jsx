@@ -13,7 +13,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
-// import LoginIcon from "@mui/icons-material/Login";
+import LoginIcon from "@mui/icons-material/Login";
 
 import {
   MyList,
@@ -22,12 +22,10 @@ import {
 } from "../../styles/appbar";
 import {Colors} from "../../styles/theme";
 import {useNavigate} from "react-router-dom";
-// import useRoute from "../../hooks/useRoute";
-// import {useUserAuth} from "../../context/auth/UserAuthContext";
+import {useUserAuth} from "../../context/auth/UserAuthContext";
 
 export default function Actions({matches}) {
-  // const {user} = useUserAuth();
-  // const [goLogIn] = useRoute();
+  const {logOut} = useUserAuth();
   const navigate = useNavigate();
   const {cartTotalQuantity} = useSelector((state) => state.cart);
 
@@ -40,17 +38,12 @@ export default function Actions({matches}) {
     ? ActionIconContainerMobile
     : ActionIconContainerDesktop;
 
-  const handleGoToLogIn = () => {
-    navigate("/login");
+  const handleLogOutClick = async (e) => {
+    try {
+      await logOut();
+      navigate("/");
+    } catch (err) {}
   };
-
-  // const outOrIn = {
-  //   if(user) {
-  //     <MenuItem>
-  //       <LogoutIcon style={{color: "#db1b18"}} /> Log out
-  //     </MenuItem>;
-  //   },
-  // };
 
   return (
     <Component>
@@ -87,10 +80,10 @@ export default function Actions({matches}) {
                 justifyContent: "space-evenly",
               }}
             >
-              <MenuItem value={20} onClick={() => handleGoToLogIn()}>
+              <MenuItem value={20} onClick={() => handleLogOutClick()}>
                 <LogoutIcon style={{color: "#db1b18"}} /> Log out
               </MenuItem>
-              {/* <MenuItem value={""}>{user && outOrIn}</MenuItem> */}
+              {/* <MenuItem>{user && outOrIn}</MenuItem> */}
             </Grid>
           </Select>
         </FormControl>

@@ -14,8 +14,13 @@ import {
 } from "../../styles/products";
 import PreductMeta from "./ProductMeta";
 import {addToCart, subTotal} from "../../services/cartSlice";
+import useDialogModal from "../../hooks/useDialogModal";
+import ProductDetail from "../productDetail";
 
 const SingleProductDesktop = ({product, matches}) => {
+  const [ProductDetailDialog, showProductDetailDialog] =
+    useDialogModal(ProductDetail);
+
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
@@ -40,7 +45,7 @@ const SingleProductDesktop = ({product, matches}) => {
     <>
       <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <ProductImage src={product.image} />
-        <ProductFavButton isFav={0} style={{marginBottom: "20px"}}>
+        <ProductFavButton isFav={0}>
           <FavoriteIcon />
         </ProductFavButton>
         {showOptions && (
@@ -59,12 +64,16 @@ const SingleProductDesktop = ({product, matches}) => {
               <ShareIcon color="primary" />
             </ProductActionButton>
             <ProductActionButton>
-              <FitScreenIcon color="primary" />
+              <FitScreenIcon
+                color="primary"
+                onClick={() => showProductDetailDialog()}
+              />
             </ProductActionButton>
           </Stack>
         </ProductActionWrapper>
       </Product>
       <PreductMeta product={product} matches={matches} />
+      <ProductDetailDialog product={product} />
     </>
   );
 };
