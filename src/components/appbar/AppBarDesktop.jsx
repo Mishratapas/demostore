@@ -37,6 +37,7 @@ const AppbarDesktop = ({matches}) => {
       navigate("/products");
     }
   };
+
   useEffect(() => {
     dispatch(subTotal());
   }, [dispatch, cart]);
@@ -58,23 +59,17 @@ const AppbarDesktop = ({matches}) => {
             display="flex"
             alignItems={"center"}
             justifyContent={"space-between"}
-            // sx={{marginTop: "25px"}}
           >
             <Button variant="contained">Home</Button>
-            {/* <Button variant="contained">Category</Button> */}
             <Button variant="contained" onClick={() => handleGotoProducts()}>
               Products
             </Button>
             <FormControl
               sx={{
-                // m: 1,
                 width: "20%",
-                // backgroundColor: Colors.white,
-                //  borderRadius: "16px",
               }}
             >
               <InputLabel
-                // id="demo-simple-select-label"
                 sx={{
                   color: Colors.white,
                   display: "inline",
