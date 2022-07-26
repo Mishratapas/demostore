@@ -1,0 +1,107 @@
+.detail-container {
+  background: var(--background);
+  position: relative;
+  z-index: 4;
+  .detail-header {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 5rem;
+    background-color: var(--card-color);
+    padding: 1rem;
+    span {
+      color: var(--blue);
+      font-size: 1.5rem;
+    }
+    svg {
+      color: var(--blue);
+    }
+  }
+  .left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      max-inline-size: 100%;
+      block-size: auto;
+      height: 20rem;
+      transition: var(--transition);
+      &:hover {
+        box-shadow: var(--elevate-shadow);
+      }
+    }
+  }
+  .right {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--blue);
+    button {
+      padding: 0.8rem 2rem;
+      border-radius: 2rem;
+      background-color: var(--background);
+      color: var(--blue);
+      border: 0.1rem solid var(--blue);
+      font-weight: bolder;
+      transition: var(--transition);
+      &:hover {
+        background-color: var(--dark-blue);
+        color: var(--background);
+        border-color: var(--background);
+      }
+    }
+  }
+  span {
+    font-size: 2rem;
+  }
+  .rating-container {
+    display: flex;
+    flex-direction: row;
+    span {
+      font-size: 1.5rem;
+    }
+    .rating-content {
+      margin-left: 0.3rem;
+      padding: 0.3rem 0.5rem;
+      width: 3.5rem;
+      height: 2rem;
+      background-color: var(--blue-background);
+      border-radius: 1rem;
+    }
+    svg {
+      color: "#e1fa00";
+    }
+  }
+  @media only screen and (min-device-width: 768px) {
+    .left-right-content {
+      display: flex;
+      justify-content: space-evenly;
+      .left {
+        width: 40%;
+      }
+      .right {
+        width: 60%;
+      }
+    }
+  }
+  @media only screen and (min-device-width: 1000px) {
+    .left-right-content {
+      display: flex;
+      justify-content: space-evenly;
+      .left {
+        width: 30%;
+      }
+      .right {
+        width: 70%;
+        .button-container {
+          display: flex;
+          align-items: flex-end;
+        }
+      }
+    }
+  }
+}

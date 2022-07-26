@@ -2,6 +2,7 @@ import {useMediaQuery} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 
 import AppBarMobile from "./AppBarMobile";
+import AppbarDesktop1 from "./AppBarDesktop1";
 import AppbarDesktop from "./AppBarDesktop";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
@@ -21,7 +22,7 @@ export default function AppBar() {
       {matches ? (
         <AppBarMobile matches={matches} />
       ) : (
-        <AppbarDesktop matches={matches} />
+        <AppbarDesktop1 matches={matches} />
       )}
     </>
   );

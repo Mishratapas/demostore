@@ -5,7 +5,7 @@ import {Box, Button, Container, Grid} from "@mui/material";
 import {getData} from "../../services/dataSlice";
 
 import OtherAppBar from "../appbar/OtherAppBar";
-import Footer from "../footer";
+import Footer from "../../2ndProject/components/footer/Footer";
 
 import UseProduct from "../../hooks/useProduct";
 import useBoolean from "../../hooks/useBoolean";

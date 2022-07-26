@@ -4,7 +4,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {Form, Button, Alert} from "react-bootstrap";
 
 import {Box} from "@mui/material";
-import Footer from "../../components/footer";
+import Footer from "../../2ndProject/components/footer/Footer";
 
 import {
   HeaderContainer,

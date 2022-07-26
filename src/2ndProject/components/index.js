@@ -1,0 +1,9 @@
+export {default as Navbar} from "./navbar/Navbar";
+export {default as Header} from "./header/Header";
+export {default as Slider} from "./slider/Slider";
+export {default as Category} from "./category/Category";
+export {default as ProductPage} from "./productPage/ProductPage";
+export {default as Footer} from "./footer/Footer";
+export {default as Loading} from "./loading/Loading";
+export {default as NotFound} from "../pages/NotFound/NotFound";
+export {default as ProductContent} from "./productPage/ProductContent";

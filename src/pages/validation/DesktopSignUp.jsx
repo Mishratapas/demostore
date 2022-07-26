@@ -11,8 +11,8 @@ import {
   LeftImageContainer,
   OuterContainer,
   SecondContainer,
-} from "../../styles/validation";
-import Footer from "../../components/footer";
+} from "../../";
+
 import {useState} from "react";
 import {useUserAuth} from "../../context/auth/UserAuthContext";
 import {getFirstName, getSecondName} from "../../services/nameSlice";
@@ -98,9 +98,6 @@ const DesktopLogIn = () => {
           </SecondContainer>
         </Grid>
       </Grid>
-      <Box sx={{marginTop: "20px"}}>
-        <Footer />
-      </Box>
     </Box>
   );
 };

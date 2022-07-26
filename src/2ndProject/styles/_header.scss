@@ -1,0 +1,107 @@
+.home {
+  background-color: var(--blue-background);
+  z-index: 1;
+  padding: 0 1rem;
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    .title-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      gap: 1rem;
+      align-items: center;
+      h2 {
+        color: var(--dark-blue);
+        text-transform: uppercase;
+      }
+      .input-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        background-color: var(--background);
+        padding: 0.5rem;
+        color: var(--dark-blue);
+        width: 100%;
+        border-radius: 1rem;
+        input {
+          color: var(--dark-blue);
+          background-color: var(--background);
+          padding: 0 1rem;
+          border: none;
+          font-size: 1rem;
+          width: 100%;
+          &:focus {
+            outline: none;
+          }
+        }
+        .icon {
+          background-color: var(--ocean-blue);
+          padding: 0.3rem;
+          display: flex;
+          justify-content: center;
+          border-radius: 0.5rem;
+          cursor: pointer;
+          transition: var(--transition);
+          &:hover {
+            background-color: var(--dark-blue);
+          }
+          svg {
+            color: white;
+            font-size: 1.3rem;
+          }
+        }
+      }
+    }
+    .extra-image {
+      img {
+        max-inline-size: 100%;
+        block-size: auto;
+      }
+    }
+  }
+  @media only screen and (min-device-width: 768px) {
+    margin: 3rem;
+    border-radius: 1rem;
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .title-container {
+        h2 {
+          margin-top: 2rem;
+          font-size: 3.5rem;
+        }
+        .input-container {
+          width: 70%;
+        }
+      }
+    }
+  }
+  @media only screen and (min-device-width: 1000px) {
+    margin: 0 5rem;
+    border-radius: 1rem;
+    .container {
+      flex-direction: row;
+      gap: 1rem;
+      padding: 2rem 4rem;
+      .title-container {
+        align-items: flex-start;
+        h2 {
+          text-align: start;
+          font-size: 3rem;
+        }
+      }
+      .extra-image {
+        img {
+          height: 25rem;
+          max-inline-size: auto;
+        }
+      }
+    }
+  }
+}

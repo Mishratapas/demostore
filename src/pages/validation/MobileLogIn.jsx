@@ -2,7 +2,7 @@ import {Form, Button, Alert} from "react-bootstrap";
 import {GoogleButton} from "react-google-button";
 import {Box, Divider} from "@mui/material";
 
-import Footer from "../../components/footer";
+import Footer from "../../2ndProject/components/footer/Footer";
 
 import {
   HeaderContainer,

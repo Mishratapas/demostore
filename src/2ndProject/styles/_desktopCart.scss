@@ -1,0 +1,28 @@
+.cart-container {
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    span {
+      color: var(--dark-blue);
+      font-size: 2rem;
+    }
+  }
+  .cart-empty {
+    span {
+      color: var(--dark-blue);
+      font-size: 2rem;
+    }
+  }
+  @media only screen and (min-device-width: 768px) {
+    .cart-items {
+      .cart-item {
+        .cart-product {
+          h3 {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+}

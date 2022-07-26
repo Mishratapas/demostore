@@ -1,37 +1,74 @@
+import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {Route, Routes} from "react-router-dom";
+import scrollReveal from "scrollreveal";
+import {Footer, Navbar} from "./2ndProject/components";
 
-import Home from "./pages/home";
-import NotFound from "./components/notfound";
-import AllProducts from "./components/products/AllProducts";
-import Cart from "./pages/cart";
-import LogIn from "./pages/validation/LogIn";
-import SignUp from "./pages/validation/SignUp";
-import {useEffect} from "react";
-import ProtectedRoutes from "./protected/ProtectedRoutes";
+import {getData} from "./2ndProject/services/dataSlice";
+import {subTotal} from "./2ndProject/services/cartSlice";
+
+import {
+  AllProduct,
+  Home,
+  LogIn,
+  SignUp,
+  Cart,
+  ProductDetail,
+} from "./2ndProject/pages";
+
+//import ProtectedRoute from "./2ndProject/protected/ProtectedRoute";
 
 function App() {
+  const dispatch = useDispatch();
+  const {items} = useSelector((state) => state.data);
+  const cart = useSelector((state) => state.cart);
+
+  const [theme, setTheme] = useState("dark");
+  const changeTheme = () => {
+    theme === "dark" ? setTheme("light") : setTheme("dark");
+  };
+
+  useEffect(() => {
+    dispatch(getData());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(subTotal());
+  }, [dispatch, cart]);
+
   useEffect(() => {
     document.title = "demostore";
-    console.log("reload");
+
+    const registerAnimations = () => {
+      const sr = scrollReveal({
+        origin: "bottom",
+        distance: "80px",
+        duration: 1000,
+        reset: false,
+      });
+      sr.reveal(
+        `nav, .service-container, .categories-container, .slider-container,
+         .product-container, .allproducts-container, .detail-container, .mobile-bottom,
+          footer
+          `,
+        {interval: 500}
+      );
+    };
+    registerAnimations();
   }, []);
 
   return (
-    <Routes>
-      <Route exact path="/" element={<Home />} />
-      <Route exact path="/login" element={<LogIn />} />
-      <Route exact path="/signup" element={<SignUp />} />
-      <Route
-        exact
-        path="/products"
-        element={
-          <ProtectedRoutes>
-            <AllProducts />
-          </ProtectedRoutes>
-        }
-      />
-      <Route exact path="/cart" element={<Cart />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <div className="app">
+      <Navbar changeTheme={changeTheme} currentTheme={theme} />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route extact path="/products" element={<AllProduct items={items} />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route exact path="/login" element={<LogIn />} />
+        <Route exact path="/signup" element={<SignUp />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
+      </Routes>
+    </div>
   );
 }
 

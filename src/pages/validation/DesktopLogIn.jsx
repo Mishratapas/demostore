@@ -12,7 +12,7 @@ import {
   OuterContainer,
   SecondContainer,
 } from "../../styles/validation";
-import Footer from "../../components/footer";
+import Footer from "../../2ndProject/components/footer/Footer";
 import {useState} from "react";
 import {useUserAuth} from "../../context/auth/UserAuthContext";
 
@@ -104,9 +104,6 @@ const DesktopLogIn = () => {
           </SecondContainer>
         </Grid>
       </Grid>
-      <Box sx={{marginTop: "20px"}}>
-        <Footer />
-      </Box>
     </Box>
   );
 };

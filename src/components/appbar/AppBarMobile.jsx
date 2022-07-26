@@ -22,6 +22,7 @@ const AppBarMobile = ({matches}) => {
   useEffect(() => {
     dispatch(subTotal());
   }, [dispatch, cart]);
+
   const {setDrawerOpen} = useUIContext();
 
   return (

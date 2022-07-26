@@ -60,7 +60,6 @@ const MobileCart = () => {
   return (
     <>
       <Container>
-        <OtherAppBar />
         <Box
           sx={{display: "flex", alignItems: "center", justifyContent: "center"}}
         >

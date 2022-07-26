@@ -6,7 +6,7 @@ import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ClearAllIcon from "@mui/icons-material/ClearAll";
 
-import OtherAppBar from "../../components/appbar/OtherAppBar";
+import OtherAppBar from "../../../components/appbar/OtherAppBar";
 import "../../styles/cart/cart.css";
 
 import {
@@ -16,11 +16,15 @@ import {
   removeFromCart,
   subTotal,
 } from "../../services/cartSlice";
-import {CartHeader} from "../../styles/cart";
+import {CartHeader} from "../../../styles/cart";
 
 const DesktopCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+
+  // useEffect(() => {
+  //   window.reload();
+  // }, []);
 
   useEffect(() => {
     dispatch(subTotal());
@@ -84,7 +88,7 @@ const DesktopCart = () => {
                         </button>
                       </div>
                     </div>
-                    <div className="cart-product-price">${cartItem.price}</div>
+                    <div className="cart-product-price"> ₹{cartItem.price}</div>
                     <div className="cart-product-quantity">
                       <button onClick={() => handleDecreaseCart(cartItem)}>
                         -
@@ -95,7 +99,7 @@ const DesktopCart = () => {
                       </button>
                     </div>
                     <div className="cart-product-total-price">
-                      {cartItem.price * cartItem.cartQuantity}
+                      ₹{cartItem.price * cartItem.cartQuantity}
                     </div>
                   </div>
                 ))}
@@ -115,7 +119,7 @@ const DesktopCart = () => {
                   <div className="subtotal">
                     <span>Subtotal</span>
                     <span className="amount">
-                      ${cart.cartTotalAmount.toFixed(2)}
+                      ₹{cart.cartTotalAmount.toFixed(2)}
                     </span>
                   </div>
                   <p>Taxes and shipping calculatd at checkpoint</p>

@@ -1,0 +1,85 @@
+.allproducts-container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  gap: 1rem;
+  .buttons {
+    margin-top: 1rem;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: 1rem;
+    button {
+      padding: 0.5rem 0.3rem;
+      border-radius: 2rem;
+      background-color: var(--background);
+      color: var(--blue);
+      border: 0.1rem solid var(--blue);
+      font-weight: bolder;
+      transition: var(--transition);
+      &:hover {
+        background-color: var(--dark-blue);
+        color: var(--background);
+        border-color: var(--background);
+      }
+    }
+  }
+  h4 {
+    margin-top: 2rem;
+    color: var(--dark-blue);
+  }
+  .second-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: 2rem;
+    padding: 1rem;
+    .meta-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      grid-template-columns: repeat(2, 1fr);
+      background-color: var(--blue-background);
+      gap: 1rem;
+      border-radius: 1rem;
+      text-decoration: none;
+      transition: var(--transition);
+      &:hover {
+        box-shadow: var(--elevate-shadow);
+      }
+      p {
+        color: var(--dark-blue);
+      }
+      img {
+        margin-top: 1rem;
+        max-inline-size: 100%;
+        block-size: auto;
+        height: 10rem;
+      }
+      button {
+        margin-bottom: 2rem;
+        padding: 0.5rem;
+        border-radius: 2rem;
+        background-color: var(--background);
+        color: var(--blue);
+        border: 0.1rem solid var(--blue);
+        font-weight: bolder;
+        transition: var(--transition);
+        &:hover {
+          background-color: var(--dark-blue);
+          color: var(--background);
+          border-color: var(--background);
+        }
+      }
+    }
+  }
+  @media only screen and (min-device-width: 768px) {
+    .buttons {
+      grid-template-columns: repeat(6, 1fr);
+    }
+    .second-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

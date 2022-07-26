@@ -90,7 +90,7 @@ const ProductDetail = ({open, onClose, product}) => {
             >
               <Typography variant="h5" sx={{fontSize: "20px"}}>
                 {product.rating.rate}
-                <StarIcon fontSize="10px" style={{color: "#e1fa00 "}} />
+                <StarIcon fontSize="10px" style={{color: "#e1fa00"}} />
               </Typography>
             </Grid>
             <Divider
