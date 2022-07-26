@@ -38,7 +38,6 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
       "react-app/jest"
     ]
   },
@@ -56,6 +55,7 @@
   },
   "devDependencies": {
     "eslint": "^8.19.0",
+    "eslint-config-react": "^1.1.7",
     "eslint-plugin-jest": "^25.7.0",
     "sass": "^1.53.0"
   }
