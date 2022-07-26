@@ -58,7 +58,7 @@ function App() {
   }, []);
 
   return (
-    <div className="app">
+    <div className="app" data-theme={"dark"}>
       <Navbar changeTheme={changeTheme} currentTheme={theme} />
       <Routes>
         <Route exact path="/" element={<Home />} />
